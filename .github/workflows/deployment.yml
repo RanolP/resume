@@ -24,7 +24,7 @@ jobs:
           unzip Pretendard.zip public/static/*.otf;
           mkdir fonts;
           cp -r public/static fonts;
-      - run: ./scripts/src/compile.ts
+      - run: ./scripts/src/prebuild.ts
         env:
           GH_TOKEN: ${{ github.token }}
       - run: mkdir www; typst compile --font-path fonts resume.typ www/index.pdf
