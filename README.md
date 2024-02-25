@@ -6,7 +6,7 @@ Modern résumé built with Typst
 
 - Use VS Code for editor (contains recommended extension and settings).
 - Use mise or asdf-compatible version manager and activate here.
-- Run `./scripts/src/compile.ts` when you need
+- Run `./scripts/src/prebuild.ts` when you need and compile it with `typst compile resume.typ`.
 
 ## Special Thanks
 
