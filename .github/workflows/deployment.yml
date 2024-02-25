@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 permissions:
-  packages: write
+  pages: write
   id-token: write
 
 concurrency:
