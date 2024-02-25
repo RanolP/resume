@@ -6,6 +6,7 @@ on:
 
 permissions:
   packages: write
+  id-token: write
 
 concurrency:
   group: deployment
