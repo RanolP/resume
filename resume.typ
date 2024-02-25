@@ -86,7 +86,7 @@
     column-gutter: 16pt,
     row-gutter: 8pt,
     [#icon("lucide/mail") *전자 우편#super[Mailbox]*],
-    link("mailto:me@ranolp.dev")[me\@ranolp.dev],
+    link("mailto:" + metadata.email)[#metadata.email],
     [#icon("lucide/phone") *전화#super[Phone]*],
     link("tel:+821095426545")[+82 10 9542 6545],
   ), grid(
@@ -233,9 +233,9 @@
           ]
         ])
       ],
-    )[ WinAPI를 활용해 작업 표시줄에 CPU 사용량, 남은 배터리 등의 정보를 보여줄 수 있도록 커스텀 위젯을 제작할 수 있는 프로그램을
-      만들었습니다\
-      \ ],
+    )[
+      WinAPI를 활용해 작업 표시줄에 CPU 사용량, 남은 배터리 등의 정보를 보여줄 수 있도록 커스텀 위젯을 제작할 수 있는 프로그램을 만들었습니다
+    ],
     activityEntry(
       from: datetime(year: 2021, month: 12, day: 10),
       title: pad(top: -1em / 4)[
