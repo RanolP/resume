@@ -30,7 +30,9 @@
   footer: [
     #pad(left: -0.4cm)[
       #text(size: 10pt, fill: color.rgb("#575049"))[
-        상기 이력은 #datetime.today().display("[year]년 [month]월 [day]일 기준입니다")
+        상기 이력은
+        #datetime.today().display("[year]년 [month]월 [day]일")
+        기준입니다
       ]
     ]
     #align(
