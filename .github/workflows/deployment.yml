@@ -7,7 +7,6 @@ on:
 permissions:
   pages: write
   id-token: write
-  pull-requests: read
 
 concurrency:
   group: deployment
@@ -26,7 +25,8 @@ jobs:
           mkdir fonts;
           cp -r public/static fonts/PretendardVariable;
       - run: ./scripts/src/compile.ts
-      - run: gh pr view https://github.com/motiondivision/motionone/pull/244 --json number,state,title,updatedAt
+        env:
+          GH_TOKEN: ${{ github.token }}
       - run: mkdir www; typst compile --font-path fonts resume.typ www/index.pdf
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
