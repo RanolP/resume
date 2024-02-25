@@ -21,9 +21,9 @@ jobs:
       - uses: typst-community/setup-typst@v3
       - run: |
           curl -Lf https://github.com/orioncactus/pretendard/releases/download/v1.3.9/Pretendard-1.3.9.zip --output Pretendard.zip;
-          unzip Pretendard.zip public/variable/PretendardVariable.ttf;
+          unzip Pretendard.zip public/static/*.otf;
           mkdir fonts;
-          cp public/variable/PretendardVariable.ttf fonts/PretendardVariable.ttf;
+          cp -r public/static fonts/PretendardVariable;
       - run: ./scripts/src/compile.ts
       - run: mkdir www; typst compile --font-path fonts resume.typ www/index.pdf
       - uses: actions/configure-pages@v4
