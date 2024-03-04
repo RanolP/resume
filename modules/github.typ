@@ -1,5 +1,11 @@
 #import "components.typ": chip, icon
 
+#let gh-repo(name-with-owner) = link(
+  "https://github.com/" + name-with-owner,
+)[
+  #icon("devicon/github", bottom: -1em / 6) #text(weight: 700)[#name-with-owner]
+]
+
 #let gh-pull(url) = {
   [#metadata(url) <github-pull>]
   let pull-db = json("../assets/.automatic/github/pull.json")

@@ -44,3 +44,20 @@
     ]
   ]
 ]
+
+#let tech-chips = for (k, v) in (
+  "rust": ("devicon/rust", "Rust"),
+  "wasm": ("devicon/wasm", "WebAssembly"),
+  "typescript": ("devicon/typescript", "TypeScript"),
+  "nextjs": ("devicon/nextjs", "Next.js"),
+  "playwright": ("devicon/playwright", "Playwright"),
+  "openapi": ("devicon/openapi", "OpenAPI"),
+  "vite": ("devicon/vitejs", "Vite"),
+  "webpack": ("devicon/webpack", "Webpack"),
+  "mysql": ("devicon/mysql", "MySQL"),
+) {
+  ((k): chip[
+    #set text(size: 8pt, weight: 600)
+    #icon(v.at(0)) #v.at(1)
+  ])
+}

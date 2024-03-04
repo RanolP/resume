@@ -12,3 +12,13 @@
     (align(center)[#second],)
   }),
 )
+
+#let format-thousand(n) = {
+  let len = str(n).len()
+  for (i, c) in str(n).codepoints().enumerate() {
+    if i != 0 and calc.rem((len - i), 3) == 0 {
+      ","
+    }
+    c
+  }
+}
