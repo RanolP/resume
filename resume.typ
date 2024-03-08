@@ -120,35 +120,31 @@
   #align(
     center,
   )[
-    #enumerate(
-      (
-        ("devicon/typescript", "TS"),
-        ("devicon/javascript", "JS"),
-        ("devicon/css3", "CSS"),
-        ("devicon/react", [React #sym.and React Native]),
-        ("skill-icons/nextjs-light", "Next.js"),
-        ("devicon/solidjs", "Solid.js"),
-        ("devicon/tailwindcss", "Tailwind CSS"),
-        ("logos/unocss", "UnoCSS"),
-        ("devicon/eslint", "ESLint"),
-      ).map(
-        ((icon-name, caption)) => (icon(icon-name, size: 16pt, bottom: 0pt), text(size: 8pt)[#caption]),
-      ),
-    )
-    #enumerate(
-      (
-        ("devicon/rust", "Rust"),
-        ("devicon/kotlin", "Kotlin"),
-        ("devicon/swift", "Swift"),
-        ("devicon/bash", "Bash"),
-        ("devicon/gradle", "Gradle"),
-        ("devicon/git", "Git"),
-        ("devicon/github", "GitHub"),
-        ("devicon/githubactions", "GitHub Actions"),
-      ).map(
-        ((icon-name, caption)) => (icon(icon-name, size: 16pt, bottom: 0pt), text(size: 8pt)[#caption]),
-      ),
-    )
+    #for row in ((
+      tech-list.typescript--short,
+      tech-list.javascript--short,
+      tech-list.css,
+      tech-list.react-and-react-native,
+      tech-list.nextjs,
+      tech-list.solidjs,
+      tech-list.tailwindcss,
+      tech-list.unocss,
+      tech-list.eslint,
+    ), (
+      tech-list.rust,
+      tech-list.kotlin,
+      tech-list.swift,
+      tech-list.bash,
+      tech-list.gradle,
+      tech-list.git,
+      tech-list.github,
+      tech-list.github-actions,
+    )) {
+      set text(size: 8pt)
+      enumerate(
+        row.map(tech => (icon(tech.icon, size: 16pt, bottom: 0pt), tech.label)),
+      )
+    }
   ]
 ]
 

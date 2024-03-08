@@ -45,19 +45,37 @@
   ]
 ]
 
-#let tech-chips = for (k, v) in (
-  "rust": ("devicon/rust", "Rust"),
-  "wasm": ("devicon/wasm", "WebAssembly"),
-  "typescript": ("devicon/typescript", "TypeScript"),
-  "nextjs": ("devicon/nextjs", "Next.js"),
-  "playwright": ("devicon/playwright", "Playwright"),
-  "openapi": ("devicon/openapi", "OpenAPI"),
-  "vite": ("devicon/vitejs", "Vite"),
-  "webpack": ("devicon/webpack", "Webpack"),
-  "mysql": ("devicon/mysql", "MySQL"),
-) {
+#let tech-list = (
+  rust: (icon: "devicon/rust", label: "Rust"),
+  wasm: (icon: "devicon/wasm", label: "WebAssembly"),
+  typescript: (icon: "devicon/typescript", label: "TypeScript"),
+  typescript--short: (icon: "devicon/typescript", label: "TS"),
+  javascript: (icon: "devicon/javascript", label: "JavaScript"),
+  javascript--short: (icon: "devicon/javascript", label: "JS"),
+  react-and-react-native: (icon: "devicon/react", label: [React #sym.and React Native]),
+  css: (icon: "devicon/css3", label: "CSS"),
+  nextjs: (icon: "skill-icons/nextjs-light", label: "Next.js"),
+  solidjs: (icon: "devicon/solidjs", label: "Solid.js"),
+  tailwindcss: (icon: "devicon/tailwindcss", label: "Tailwind CSS"),
+  unocss: (icon: "logos/unocss", label: "UnoCSS"),
+  eslint: (icon: "devicon/eslint", label: "ESLint"),
+  playwright: (icon: "devicon/playwright", label: "Playwright"),
+  openapi: (icon: "devicon/openapi", label: "OpenAPI"),
+  vite: (icon: "devicon/vitejs", label: "Vite"),
+  webpack: (icon: "devicon/webpack", label: "Webpack"),
+  mysql: (icon: "devicon/mysql", label: "MySQL"),
+  kotlin: (icon: "devicon/kotlin", label: "Kotlin"),
+  swift: (icon: "devicon/swift", label: "Swift"),
+  bash: (icon: "devicon/bash", label: "Bash"),
+  gradle: (icon: "devicon/gradle", label: "Gradle"),
+  git: (icon: "devicon/git", label: "Git"),
+  github: (icon: "devicon/github", label: "GitHub"),
+  github-actions: (icon: "devicon/githubactions", label: "GitHub Actions"),
+)
+
+#let tech-chips = for (k, v) in tech-list {
   ((k): chip[
     #set text(size: 8pt, weight: 600)
-    #icon(v.at(0)) #v.at(1)
+    #icon(v.icon) #v.label
   ])
 }
