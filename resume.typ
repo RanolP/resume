@@ -72,13 +72,9 @@
   #text(weight: 700, tracking: 1pt)[#metadata.location]
 ]
 
-#text(
-  size: 16pt,
-  weight: 600,
-)[
+#text(size: 16pt, weight: 600)[
   #set par(leading: 8pt)
-  사람과 컴퓨터 사이를 *이어주는* 소프트웨어를 만듭니다 \
-  #text(size: 13pt)[Building Softwares *Connecting* People with Computers]
+  #metadata.bio.ko \ #text(size: 13pt)[#metadata.bio.en]
 ]
 
 #{
