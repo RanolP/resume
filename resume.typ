@@ -19,7 +19,7 @@
         )[
           #text(weight: 700)[#metadata.name.nickname / #metadata.name.real-korean]
           ---
-          #text(weight: 600, tracking: 1pt)[소프트웨어 엔지니어]
+          #text(weight: 600, tracking: 1pt)[#metadata.role]
           \@
           #text(weight: 600, tracking: 0.5pt)[#metadata.location]
         ]
@@ -67,7 +67,7 @@
   size: 32pt,
 )[#metadata.name.nickname / #metadata.name.real-korean#super[#upper[#metadata.name.real-english]]]
 #text(size: 12pt)[
-  #text(weight: 900, tracking: 2pt)[소프트웨어 엔지니어]
+  #text(weight: 900, tracking: 2pt)[#metadata.role]
   #text(weight: 600)[\@]
   #text(weight: 700, tracking: 1pt)[#metadata.location]
 ]
