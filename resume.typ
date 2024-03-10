@@ -144,9 +144,10 @@
   ]
 ]
 
-== 경력#super[Work Experiences]
-
 #workExpList(
+  header: [
+    == 경력#super[Work Experiences]
+  ],
   (
     workExpEntry(
       from: datetime(year: 2023, month: 3, day: 20),

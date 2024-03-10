@@ -20,83 +20,49 @@
   if body-header != none {
     body-header(formatDuration(total-duration-in-weeks))
   }
-  locate(
-    loc => {
-      let header-counter = counter("activity-list-header-counter")
-      let header-state-id = header-counter.at(loc).at(0)
-      header-counter.step()
-      let header-state = state("activity-list-row-header-state-" + str(header-state-id), (:))
-
-      grid(
-        columns: (auto, 1fr),
-        gutter: 15pt,
-        ..(
-          entries.map(
-            ((from, to, title, body)) => {
-              let header-renderred = (w) => if header != none {
-                locate(
-                  loc => {
-                    header-state.update(header-pages => {
-                      let page = str(loc.position().page)
-                      return (..header-pages, (page): header-pages.at(page, default: 0) + 1)
-                    })
-                    locate(
-                      loc => {
-                        let header-pages = header-state.at(loc)
-                        let page = str(loc.position().page)
-                        if header-pages.at(page, default: 0) <= 2 {
-                          style(styles => pad(right: -measure(header, styles).width + w)[#header])
-                        }
-                      },
-                    )
-                  },
-                )
-              }
-              let time = (e) => align(center)[
-                #block(breakable: false)[
-                  #e
-                  #text(size: 10pt, weight: 600)[
-                    #{ from.display("[year].[month]") }
-                    #if type(to) == "datetime" {
-                      [
-                        \~
-                        #if to != datetime.today() {
-                          to.display("[year].[month]")
-                        } else {
-                          "Present"
-                        } \
-                        #text(size: 8pt)[약 #formatDuration(to - from)
-                        ]
-                      ]
-                    }
-                  ]
+  table(
+    columns: (auto, 1fr),
+    inset: 0pt,
+    gutter: 15pt,
+    stroke: none,
+    table.header(table.cell(colspan: 2)[#header]),
+    ..(entries.map(((from, to, title, body)) => {
+      let row = (align(center)[
+        #block(breakable: false)[
+          #text(size: 10pt, weight: 600)[
+            #{ from.display("[year].[month]") }
+            #if type(to) == "datetime" {
+              [
+                \~
+                #if to != datetime.today() {
+                  to.display("[year].[month]")
+                } else {
+                  "Present"
+                } \
+                #text(size: 8pt)[약 #formatDuration(to - from)
                 ]
               ]
-              let row = (style(styles => {
-                time(header-renderred(measure(time([]), styles).width))
-              }), block(breakable: false)[
-                #hide[#header-renderred(0pt)]
-                #pad(bottom: -4pt)[
-                  #set text(size: 12pt, weight: 700)
-                  #set par(leading: 0.5em)
-                  #title
-                ]
-                #set text(size: 10pt)
-                #body
-              ],)
+            }
+          ]
+        ]
+      ], block(breakable: false)[
+        #pad(bottom: -4pt)[
+          #set text(size: 12pt, weight: 700)
+          #set par(leading: 0.5em)
+          #title
+        ]
+        #set text(size: 10pt)
+        #body
+      ],)
 
-              return row
-            },
-          ),
-        ).flatten(),
-      )
-    },
+      return row
+    }),).flatten(),
   )
 }
 
 #let activityEntry(body, from: "#INVALID#", to: "", title: "#INVALID_TITLE#") = (from, to, title, body)
 
-#let workExpList(entries) = activityList(entries)
+#let workExpList(entries, body-header: none, header: none) = activityList(entries, body-header: body-header, header: header)
 
 #let workExpEntry(
   body,
