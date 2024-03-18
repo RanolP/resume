@@ -5,13 +5,28 @@
 #import "modules/solved-ac.typ": *
 #import "metadata.typ": metadata
 
+#let theme = sys.inputs.at("theme", default: "light")
+#let palette = if theme == "light" {
+  (
+    foreground1: color.rgb("#1f2328"),
+    foreground2: color.rgb("#495057"),
+    link: color.rgb("#1c7ed6"),
+  )
+} else {
+  (
+    foreground1: color.rgb("#e6edf3"),
+    foreground2: color.rgb("#ced4da"),
+    link: color.rgb("#74c0fc"),
+  )
+}
+
 #set page(
   paper: "a4",
-  margin: 4pt,
+  margin: (left: 4pt, right: 4pt, top: 4pt, bottom: 2cm),
   footer-descent: 0pt,
   footer: [
     #pad(left: -0.4cm, bottom: -0.4pt)[
-      #text(size: 10pt, fill: color.rgb("#575049"))[
+      #text(size: 10pt, fill: palette.foreground2)[
         상기 이력은
         #datetime.today().display("[year]년 [month]월 [day]일")
         기준입니다
@@ -43,14 +58,12 @@
   ],
 )
 
-#let theme = sys.inputs.at("theme", default: "light")
-#let palette = if theme == "light" {
-  (foreground1: color.rgb("#1f2328"))
-} else {
-  (foreground1: color.rgb("#e6edf3"))
-}
-#set text(fill: palette.foreground1)
-#set text(font: "Pretendard", features: ("ss06",), fallback: true)
+#set text(
+  font: "Pretendard",
+  fill: palette.foreground1,
+  features: ("ss06",),
+  fallback: true,
+)
 #show heading: set text(size: 16pt)
 
 #align(
@@ -92,16 +105,12 @@
   ]
 ]
 
-#line(length: 100%)
+#line(length: 100%, stroke: 1pt + palette.foreground1)
 
 == 기술#super[Skills]
 
-#box(
-  inset: (left: 8pt, top: 4pt),
-)[
-  #align(
-    center,
-  )[
+#box(inset: (left: 8pt, top: 4pt))[
+  #align(center)[
     #for row in ((
       tech-list.typescript--short,
       tech-list.javascript--short,
@@ -123,9 +132,11 @@
       tech-list.github-actions,
     )) {
       set text(size: 8pt)
-      enumerate(
-        row.map(tech => (icon(tech.icon, size: 16pt, bottom: 0pt), tech.label)),
-      )
+      enumerate(row.map(tech => (icon(if theme == "dark" {
+        tech.at("icon-dark", default: tech.icon)
+      } else {
+        tech.icon
+      }, size: 16pt, bottom: 0pt), tech.label)))
     }
   ]
 ]
@@ -159,7 +170,7 @@
       title: belonging([해커톤 멘토 #sym.and 심사위원], [쿠씨톤]),
     )[
       #link("https://kucc.co.kr/")[#text(
-          fill: color.rgb("#1c7ed6"),
+          fill: palette.link,
         )[#underline[KUCC]#sub[Korea University Computer Club]]]에서 주최한 2023년 쿠씨톤에서 해커톤
       멘토 및 심사위원을 맡아 Django, React, Pygame 등을 사용하는 멘티들을 서포트하고, 작품을 심사했습니다.
     ],

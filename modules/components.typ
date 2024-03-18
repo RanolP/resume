@@ -51,7 +51,11 @@
 ]
 
 #let tech-list = (
-  rust: (icon: "devicon/rust", label: "Rust"),
+  rust: (
+    icon: "devicon/rust",
+    icon-dark: "devicon-plain/rust?color=#ffffff",
+    label: "Rust",
+  ),
   wasm: (icon: "devicon/wasm", label: "WebAssembly"),
   typescript: (icon: "devicon/typescript", label: "TypeScript"),
   typescript--short: (icon: "devicon/typescript", label: "TS"),
@@ -62,7 +66,7 @@
   nextjs: (icon: "skill-icons/nextjs-light", label: "Next.js"),
   solidjs: (icon: "devicon/solidjs", label: "Solid.js"),
   tailwindcss: (icon: "devicon/tailwindcss", label: "Tailwind CSS"),
-  unocss: (icon: "logos/unocss", label: "UnoCSS"),
+  unocss: (icon: "vscode-icons/file-type-unocss", label: "UnoCSS"),
   eslint: (icon: "devicon/eslint", label: "ESLint"),
   playwright: (icon: "devicon/playwright", label: "Playwright"),
   openapi: (icon: "devicon/openapi", label: "OpenAPI"),
@@ -71,10 +75,18 @@
   mysql: (icon: "devicon/mysql", label: "MySQL"),
   kotlin: (icon: "devicon/kotlin", label: "Kotlin"),
   swift: (icon: "devicon/swift", label: "Swift"),
-  bash: (icon: "devicon/bash", label: "Bash"),
-  gradle: (icon: "devicon/gradle", label: "Gradle"),
+  bash: (icon: "logos/bash-icon", label: "Bash"),
+  gradle: (
+    icon: "logos/gradle",
+    icon-dark: "simple-icons/gradle?color=#ffffff",
+    label: "Gradle",
+  ),
   git: (icon: "devicon/git", label: "Git"),
-  github: (icon: "devicon/github", label: "GitHub"),
+  github: (
+    icon: "skill-icons/github-light",
+    icon-dark: "skill-icons/github-dark",
+    label: "GitHub",
+  ),
   github-actions: (icon: "devicon/githubactions", label: "GitHub Actions"),
 )
 
