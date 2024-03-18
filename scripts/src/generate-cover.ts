@@ -3,5 +3,5 @@
 import { $ } from "bun";
 
 await $`mkdir cover`.quiet();
-await $`typst compile cover.typ cover/page-{n}.svg -f svg`;
-await $`sed -e s/#000000/currentColor/ -i cover/page-*.svg`;
+await $`typst compile cover.typ cover/page-dark-{n}.svg --input theme=dark -f svg`;
+await $`typst compile cover.typ cover/page-light-{n}.svg --input theme=light -f svg`;

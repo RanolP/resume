@@ -5,6 +5,14 @@
 #import "modules/solved-ac.typ": *
 #import "metadata.typ": metadata
 
+#let theme = if sys.inputs.at("theme", default: "light") == "light" {
+  (foreground1: color.rgb("#000000"))
+} else {
+  (foreground1: color.rgb("#ffffff"))
+}
+
+#set text(fill: theme.foreground1)
+
 #set page(
   paper: "a4",
   margin: (top: 1.5cm, left: 1.5cm, right: 1.5cm, bottom: 2cm),
