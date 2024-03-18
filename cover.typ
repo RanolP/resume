@@ -10,12 +10,14 @@
   (
     foreground1: color.rgb("#1f2328"),
     foreground2: color.rgb("#495057"),
+    background1: color.rgb("#e6edf3"),
     link: color.rgb("#1c7ed6"),
   )
 } else {
   (
     foreground1: color.rgb("#e6edf3"),
     foreground2: color.rgb("#ced4da"),
+    background1: color.rgb("#1f2328"),
     link: color.rgb("#74c0fc"),
   )
 }
@@ -25,7 +27,7 @@
   margin: (left: 4pt, right: 4pt, top: 4pt, bottom: 2cm),
   footer-descent: 0pt,
   footer: [
-    #pad(left: -0.4cm, bottom: -0.4pt)[
+    #pad(left: 0.4cm, bottom: -0.4pt)[
       #text(size: 10pt, fill: palette.foreground2)[
         상기 이력은
         #datetime.today().display("[year]년 [month]월 [day]일")
@@ -37,18 +39,18 @@
     )[
       #pad(
         top: -1cm,
-        right: -0.5cm,
+        right: 0.4cm,
       )[
         #square(
           size: 24pt,
-          fill: color.rgb("#000000"),
+          fill: palette.foreground1,
           stroke: none,
           radius: (top-left: 25%, top-right: 25%, bottom-left: 25%, bottom-right: 25%),
         )[
           #place(
             horizon + center,
           )[
-            #text(fill: color.rgb("#ffffff"), weight: 900, number-width: "tabular")[
+            #text(fill: palette.background1, weight: 900, number-width: "tabular")[
               #counter(page).display("1")
             ]
           ]
