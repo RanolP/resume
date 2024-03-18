@@ -4,8 +4,15 @@ import { parse, stringify } from "node:querystring";
 
 await $`mkdir -p assets/.automatic/icon/`;
 
-const icons: Array<string> =
-  await $`typst query resume.typ '<icon>' --field value`.json();
+const icons: string[] = (
+  await Promise.all(
+    [
+      ["resume.typ"],
+      ["cover.typ", "--input", "theme=light"],
+      ["cover.typ", "--input", "theme=dark"],
+    ].map((file) => $`typst query ${file} '<icon>' --field value`.json())
+  )
+).flat();
 
 const data: Record<string, string> = {};
 for (const icon of icons) {

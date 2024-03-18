@@ -5,35 +5,9 @@
 #import "modules/solved-ac.typ": *
 #import "metadata.typ": metadata
 
-#let theme = if sys.inputs.at("theme", default: "light") == "light" {
-  (foreground1: color.rgb("#000000"))
-} else {
-  (foreground1: color.rgb("#ffffff"))
-}
-
-#set text(fill: theme.foreground1)
-
 #set page(
   paper: "a4",
-  margin: (top: 1.5cm, left: 1.5cm, right: 1.5cm, bottom: 2cm),
-  header: locate(
-    loc =>
-    if loc.page() != 1 {
-      pad(
-        left: -0.4cm,
-      )[
-        #text(
-          fill: color.rgb("#575049"),
-        )[
-          #text(weight: 700)[#metadata.name.nickname / #metadata.name.real-korean]
-          ---
-          #text(weight: 600, tracking: 1pt)[#metadata.role]
-          \@
-          #text(weight: 600, tracking: 0.5pt)[#metadata.location]
-        ]
-      ]
-    },
-  ),
+  margin: 4pt,
   footer-descent: 0pt,
   footer: [
     #pad(left: -0.4cm, bottom: -0.4pt)[
@@ -68,53 +42,52 @@
     ]
   ],
 )
+
+#let theme = if sys.inputs.at("theme", default: "light") == "light" {
+  (foreground1: color.rgb("#1f2328"))
+} else {
+  (foreground1: color.rgb("#e6edf3"))
+}
+#set text(fill: theme.foreground1)
 #set text(font: "Pretendard", features: ("ss06",), fallback: true)
 #show heading: set text(size: 16pt)
 
-= #text()[]
+#align(
+  center,
+)[
+  = #text(
+    size: 24pt,
+  )[#metadata.name.nickname / #metadata.name.real-korean#super[#upper[#metadata.name.real-english]]]
 
-= #text(
-  size: 32pt,
-)[#metadata.name.nickname / #metadata.name.real-korean#super[#upper[#metadata.name.real-english]]]
-#text(size: 12pt)[
-  #text(weight: 900, tracking: 2pt)[#metadata.role]
-  #text(weight: 600)[\@]
-  #text(weight: 700, tracking: 1pt)[#metadata.location]
+  #text(size: 12pt)[
+    #text(weight: 900, tracking: 2pt)[#metadata.role]
+    #text(weight: 600)[\@]
+    #text(weight: 700, tracking: 1pt)[#metadata.location]
+  ] \
+  #icon("lucide/mail?color=" + theme.foreground1.to-hex())
+  #link("mailto:" + metadata.email)[#metadata.email]
+  #sym.bar
+  #icon("lucide/phone?color=" + theme.foreground1.to-hex())
+  #link("tel:" + metadata.phone.join())[#metadata.phone.join(" ")]
+
+  #text(size: 16pt, weight: 600)[
+    #set par(leading: 8pt)
+    #metadata.bio.ko \ #text(size: 13pt)[#metadata.bio.en]
+  ]
+
+  #icon("devicon/github?color=" + theme.foreground1.to-hex())
+  #link(
+    "https://github.com/" + metadata.social.github,
+  )[\@#metadata.social.github]
+  #sym.bar
+  #icon("logos/twitter") #link(
+    "https://twitter.com/" + metadata.social.twitter,
+  )[\@#metadata.social.twitter]
+  #sym.bar
+  #icon-solved-ac() #link("https://solved.ac/profile/" + metadata.social.solved-ac)[
+    #solved-ac-profile-short(metadata.social.solved-ac)
+  ]
 ]
-
-#text(size: 16pt, weight: 600)[
-  #set par(leading: 8pt)
-  #metadata.bio.ko \ #text(size: 13pt)[#metadata.bio.en]
-]
-
-#{
-  set text(size: 10pt)
-  grid(columns: (1fr, 1.5fr), grid(
-    columns: (auto, 1fr),
-    column-gutter: 16pt,
-    row-gutter: 8pt,
-    [#icon("lucide/mail") *전자 우편#super[Mailbox]*],
-    link("mailto:" + metadata.email)[#metadata.email],
-    [#icon("lucide/phone") *전화#super[Phone]*],
-    link("tel:" + metadata.phone.join())[#metadata.phone.join(" ")],
-  ), grid(
-    columns: (auto, 1fr),
-    column-gutter: 16pt,
-    row-gutter: 8pt,
-    [#icon("devicon/github") *GitHub*],
-    link(
-      "https://github.com/" + metadata.social.github,
-    )[\@#metadata.social.github],
-    [#icon("logos/twitter") *Twitter*],
-    link(
-      "https://twitter.com/" + metadata.social.twitter,
-    )[\@#metadata.social.twitter],
-    [#icon-solved-ac() *solved.ac*],
-    link("https://solved.ac/profile/" + metadata.social.solved-ac)[
-      #solved-ac-profile(metadata.social.solved-ac)
-    ],
-  ))
-}
 
 #line(length: 100%)
 

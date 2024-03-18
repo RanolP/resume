@@ -77,3 +77,29 @@
     text(fill: color.rgb("#ff0000"))[\#NO_SOLVED_USER_DATA\#]
   }
 }
+
+#let solved-ac-profile-short(handle) = {
+  [#metadata(handle) <solved-ac-user>]
+  let user-db = json("../assets/.automatic/solved/user.json")
+  if user-db.at(handle, default: none) != none {
+    let user = user-db.at(handle)
+    let tier-color = solve-tier-colors.at(solved-ac-tier-map.at(user.solveTier))
+    [
+      #handle#super[
+        #icon(
+          "solved-ac/solve-tier-" + str(user.solveTier),
+          width: auto,
+          bottom: -1em / 4,
+        ) #sym.and
+        #icon(
+          "solved-ac/arena-tier-" + str(user.arenaTier),
+          height: 0.7em,
+          width: auto,
+          bottom: 0em,
+        )
+      ]
+    ]
+  } else {
+    text(fill: color.rgb("#ff0000"))[\#NO_SOLVED_USER_DATA\#]
+  }
+}
