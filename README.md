@@ -1,3 +1,5 @@
+![](./cover/page-1.svg)
+
 # résumé
 
 Modern résumé built with Typst
