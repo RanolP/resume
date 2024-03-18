@@ -1731,11 +1731,11 @@
             </g>
         </g>
         <g transform="translate(555.9378999999999 776.7218624999999)">
-            <path class="typst-shape" fill="#1f2328" d="M 0 6 C 0 2.6862915 2.6862915 0 6 0 L 18 0 C 21.31371 0 24 2.6862915 24 6 L 24 18 C 24 21.31371 21.31371 24 18 24 L 6 24 C 2.6862915 24 0 21.31371 0 18 Z "/>
+            <path class="typst-shape" fill="#000000" d="M 0 6 C 0 2.6862915 2.6862915 0 6 0 L 18 0 C 21.31371 0 24 2.6862915 24 6 L 24 18 C 24 21.31371 21.31371 24 18 24 L 6 24 C 2.6862915 24 0 21.31371 0 18 Z "/>
         </g>
         <g transform="translate(564.1942476562499 792.6105343749999)">
             <g class="typst-text" transform="scale(1, -1)">
-                <use xlink:href="#g9A6EA350F4A02F451753A6A6022164E1" x="0" fill="#e6edf3"/>
+                <use xlink:href="#g9A6EA350F4A02F451753A6A6022164E1" x="0" fill="#ffffff"/>
             </g>
         </g>
     </g>

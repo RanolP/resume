@@ -43,14 +43,18 @@
       )[
         #square(
           size: 24pt,
-          fill: palette.foreground1,
-          stroke: none,
+          fill: color.rgb("#000000"),
+          stroke: if theme == "dark" {
+            stroke(thickness: 1pt, paint: color.rgb("#afafaf"), dash: "loosely-dashed")
+          } else {
+            none
+          },
           radius: (top-left: 25%, top-right: 25%, bottom-left: 25%, bottom-right: 25%),
         )[
           #place(
             horizon + center,
           )[
-            #text(fill: palette.background1, weight: 900, number-width: "tabular")[
+            #text(fill: color.rgb("#ffffff"), weight: 900, number-width: "tabular")[
               #counter(page).display("1")
             ]
           ]
