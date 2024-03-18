@@ -43,12 +43,13 @@
   ],
 )
 
-#let theme = if sys.inputs.at("theme", default: "light") == "light" {
+#let theme = sys.inputs.at("theme", default: "light")
+#let palette = if theme == "light" {
   (foreground1: color.rgb("#1f2328"))
 } else {
   (foreground1: color.rgb("#e6edf3"))
 }
-#set text(fill: theme.foreground1)
+#set text(fill: palette.foreground1)
 #set text(font: "Pretendard", features: ("ss06",), fallback: true)
 #show heading: set text(size: 16pt)
 
@@ -64,10 +65,10 @@
     #text(weight: 600)[\@]
     #text(weight: 700, tracking: 1pt)[#metadata.location]
   ] \
-  #icon("lucide/mail?color=" + theme.foreground1.to-hex())
+  #icon("lucide/mail?color=" + palette.foreground1.to-hex())
   #link("mailto:" + metadata.email)[#metadata.email]
   #sym.bar
-  #icon("lucide/phone?color=" + theme.foreground1.to-hex())
+  #icon("lucide/phone?color=" + palette.foreground1.to-hex())
   #link("tel:" + metadata.phone.join())[#metadata.phone.join(" ")]
 
   #text(size: 16pt, weight: 600)[
@@ -75,7 +76,9 @@
     #metadata.bio.ko \ #text(size: 13pt)[#metadata.bio.en]
   ]
 
-  #icon("devicon/github?color=" + theme.foreground1.to-hex())
+  #icon(
+    if theme == "dark" { "skill-icons/github-dark" } else { "skill-icons/github-light" },
+  )
   #link(
     "https://github.com/" + metadata.social.github,
   )[\@#metadata.social.github]

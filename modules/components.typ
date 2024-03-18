@@ -31,7 +31,11 @@
   base-icon("../assets/brand/solved-ac.svg", size: size, bottom: bottom)
 }
 
-#let chip(body, background: color.rgb("#d2d2d2")) = [
+#let chip(
+  body,
+  background: color.rgb("#d2d2d2"),
+  foreground: color.rgb("#121212"),
+) = [
   #box[
     #pad(bottom: -3pt)[
       #rect(
@@ -39,6 +43,7 @@
         fill: background,
         inset: (left: 5pt, top: 3pt, bottom: 3pt, right: 5pt),
       )[
+        #set text(fill: foreground)
         #body
       ]
     ]
