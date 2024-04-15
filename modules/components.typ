@@ -75,9 +75,13 @@
   mysql: (icon: "devicon/mysql", label: "MySQL"),
   kotlin: (icon: "devicon/kotlin", label: "Kotlin"),
   swift: (icon: "devicon/swift", label: "Swift"),
-  bash: (icon: "logos/bash-icon", label: "Bash"),
+  bash: (
+    icon: "simple-icons/gnubash",
+    icon-dark: "simple-icons/gnubash?color=#ffffff",
+    label: "Bash",
+  ),
   gradle: (
-    icon: "logos/gradle",
+    icon: "simple-icons/gradle",
     icon-dark: "simple-icons/gradle?color=#ffffff",
     label: "Gradle",
   ),
