@@ -7,7 +7,7 @@
 
 #set page(
   paper: "a4",
-  margin: (top: 1.5cm, left: 1.5cm, right: 1.5cm, bottom: 2cm),
+  margin: (top: 1.5cm, left: 1.5cm, right: 1.5cm, bottom: 1.8cm),
   header: locate(
     loc =>
     if loc.page() != 1 {
@@ -28,7 +28,7 @@
   ),
   footer-descent: 0pt,
   footer: [
-    #pad(left: -0.4cm, bottom: -0.4pt)[
+    #pad(left: -0.4cm, top: 0.6cm, bottom: -0.01cm)[
       #text(size: 10pt, fill: color.rgb("#575049"))[
         상기 이력은
         #datetime.today().display("[year]년 [month]월 [day]일")
@@ -159,6 +159,7 @@
       애니메이션 OTT 서비스 라프텔에서 React와 React Native를 활용한 웹/앱 개발을 맡았습니다. 수행한 주요 업무는 다음과 같습니다.
       - Firebase를 활용한 A/B 테스트
       - react-email과 tailwindcss를 활용한 이메일 템플릿 생성 및 관리, CI 연동 작업
+      - Next.js ISR을 활용한 Notion Database 기반 회사 블로그 구현
     ],
   ),
 )
@@ -305,8 +306,6 @@
 
 == 오픈소스 기여#super[Open Source Contributions]
 
-- #gh-repo("typst/typst")
-  - #gh-pull("https://github.com/typst/typst/pull/3522")
 - #gh-repo("motiondivision/motionone")
   - #gh-pull("https://github.com/motiondivision/motionone/pull/244")
 - #gh-repo("resend/react-email")

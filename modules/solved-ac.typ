@@ -86,6 +86,7 @@
     let tier-color = solve-tier-colors.at(solved-ac-tier-map.at(user.solveTier))
     [
       #handle#super[
+        #set text(size: 1.5em)
         #icon(
           "solved-ac/solve-tier-" + str(user.solveTier),
           width: auto,
