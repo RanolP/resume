@@ -5,7 +5,7 @@
     en: [Building Softwares *Connecting* People with Computers],
   ),
   role: "소프트웨어 엔지니어",
-  location: "서울특별시 구로구",
+  location: "대한민국 서울특별시",
   email: "me@ranolp.dev",
   phone: ("+82", "10", "9542", "6545"),
   social: (github: "RanolP", twitter: "RanolP_777", solved-ac: "asdhugh1"),
