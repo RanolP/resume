@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+./scripts/src/generate-cover.ts
+git add cover

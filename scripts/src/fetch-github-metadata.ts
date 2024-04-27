@@ -1,6 +1,8 @@
 #!/usr/bin/env bun
 import { $ } from "bun";
+import path from "node:path";
 
+$.cwd(path.resolve(import.meta.dir, "../../"));
 await $`mkdir -p assets/.automatic/github/`;
 
 // pull

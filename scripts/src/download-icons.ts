@@ -1,7 +1,9 @@
 #!/usr/bin/env bun
 import { $ } from "bun";
 import { parse, stringify } from "node:querystring";
+import path from "node:path";
 
+$.cwd(path.resolve(import.meta.dir, "../../"));
 await $`mkdir -p assets/.automatic/icon/`;
 
 const icons: string[] = (
