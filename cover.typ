@@ -46,7 +46,7 @@
   ] \
   #icon("lucide/mail?color=" + palette.foreground1.to-hex())
   #link("mailto:" + metadata.email)[#metadata.email]
-  #sym.bar
+  $bar$
   #icon("lucide/phone?color=" + palette.foreground1.to-hex())
   #link("tel:" + metadata.phone.join())[#metadata.phone.join(" ")]
 
@@ -61,11 +61,11 @@
   #link(
     "https://github.com/" + metadata.social.github,
   )[\@#metadata.social.github]
-  #sym.bar
+  $bar$
   #icon("logos/twitter") #link(
     "https://twitter.com/" + metadata.social.twitter,
   )[\@#metadata.social.twitter]
-  #sym.bar
+  $bar$
   #icon-solved-ac() #link("https://solved.ac/profile/" + metadata.social.solved-ac)[
     #solved-ac-profile-short(metadata.social.solved-ac)
   ]
@@ -130,7 +130,7 @@
   (
     activityEntry(
       from: datetime(year: 2023, month: 11, day: 17),
-      title: belonging([해커톤 멘토 #sym.and 심사위원], [쿠씨톤]),
+      title: belonging([해커톤 멘토 $and$ 심사위원], [쿠씨톤]),
     )[
       #link("https://kucc.co.kr/")[#text(
           fill: palette.link,
@@ -259,10 +259,31 @@
   center,
 )[
   == 오픈소스 기여#super[Open Source Contributions]
-  #gh-pull-short("https://github.com/motiondivision/motionone/pull/244") \
-  #gh-pull-short("https://github.com/resend/react-email/pull/884")
-  #gh-pull-short("https://github.com/daangn/stackflow/pull/274")
-  #gh-pull-short("https://github.com/solved-ac/ui-react/pull/5", full: true)
+  #for (url,) in metadata.oss-contribs {
+    gh-pull-req(url)
+  }
+  #box(
+    width: 15cm,
+  )[
+    #{
+      let pulls = metadata.oss-contribs.map(((url,)) => gh-pull(url)).sorted(
+        key: pull => ("none": 0, "OPEN": 1, "MERGED": 2, "CLOSED": 3).at(pull.at("state", default: "none")),
+      )
+      let groups = pulls.map(pull => pull.at("state", default: none)).dedup()
+      for group in groups.filter(group => group != none) {
+        [
+          #for pull in pulls.filter(pull => pull.at("state") == group) {
+            [
+              #gh-pull-short(
+                pull,
+                full: metadata.oss-contribs.find(((url,)) => url == pull.url).at("full", default: false),
+              )
+            ]
+          } \
+        ]
+      }
+    }
+  ]
 ]
 
 #align(center)[

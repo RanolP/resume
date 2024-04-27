@@ -171,7 +171,7 @@
   (
     activityEntry(
       from: datetime(year: 2023, month: 11, day: 17),
-      title: belonging([해커톤 멘토 #sym.and 심사위원], [쿠씨톤]),
+      title: belonging([해커톤 멘토 $and$ 심사위원], [쿠씨톤]),
     )[
       #link("https://kucc.co.kr/")[#text(
           fill: color.rgb("#1c7ed6"),
@@ -261,8 +261,8 @@
           [ #tech-chips.typescript ],
         )
       ],
-    )[ 한글날을 기념해 현대 한글 11,172자를 전부 지원하는 8 #sym.times 8 도트풍 한글 글꼴 '달무리'를 만들었습니다. 현재 산돌
-      무료 폰트 중 하나로 등재되어 있습니다. ],
+    )[ 한글날을 기념해 현대 한글 11,172자를 전부 지원하는 8 $times$ 8 도트풍 한글 글꼴 '달무리'를 만들었습니다. 현재 산돌 무료
+      폰트 중 하나로 등재되어 있습니다. ],
     activityEntry(
       from: datetime(year: 2020, month: 6, day: 21),
       title: pad(top: -1em / 4)[
@@ -306,11 +306,20 @@
 
 == 오픈소스 기여#super[Open Source Contributions]
 
-- #gh-repo("motiondivision/motionone")
-  - #gh-pull("https://github.com/motiondivision/motionone/pull/244")
-- #gh-repo("resend/react-email")
-  - #gh-pull("https://github.com/resend/react-email/pull/884")
-- #gh-repo("daangn/stackflow")
-  - #gh-pull("https://github.com/daangn/stackflow/pull/274")
-- #gh-repo("solved-ac/ui-react")
-  - #gh-pull("https://github.com/solved-ac/ui-react/pull/5")
+#for (url,) in metadata.oss-contribs {
+  gh-pull-req(url)
+}
+#{
+  let pulls = metadata.oss-contribs.map(((url,)) => gh-pull(url))
+  let groups = pulls.map(pull => pull.nameWithOwner).dedup()
+  for group in groups.filter(group => group != none) {
+    [
+      - #gh-repo(group)
+        #for pull in pulls.filter(pull => pull.nameWithOwner == group) {
+          [
+            - #gh-pull-rich(pull)
+          ]
+        }
+    ]
+  }
+}

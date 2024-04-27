@@ -61,7 +61,7 @@
   typescript--short: (icon: "devicon/typescript", label: "TS"),
   javascript: (icon: "devicon/javascript", label: "JavaScript"),
   javascript--short: (icon: "devicon/javascript", label: "JS"),
-  react-and-react-native: (icon: "devicon/react", label: [React #sym.and React Native]),
+  react-and-react-native: (icon: "devicon/react", label: [React $and$ React Native]),
   css: (icon: "devicon/css3", label: "CSS"),
   nextjs: (icon: "skill-icons/nextjs-light", label: "Next.js"),
   solidjs: (icon: "devicon/solidjs", label: "Solid.js"),

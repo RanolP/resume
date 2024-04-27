@@ -9,4 +9,13 @@
   email: "me@ranolp.dev",
   phone: ("+82", "10", "9542", "6545"),
   social: (github: "RanolP", twitter: "RanolP_777", solved-ac: "asdhugh1"),
+  oss-contribs: (
+    (url: "https://github.com/openobserve/openobserve/pull/3151"),
+    (url: "https://github.com/motiondivision/motionone/pull/244"),
+    (url: "https://github.com/resend/react-email/pull/884"),
+    (url: "https://github.com/daangn/stackflow/pull/274"),
+    (url: "https://github.com/solved-ac/ui-react/pull/5", full: true),
+    (url: "https://github.com/kiwiyou/basm-rs/pull/55"),
+    (url: "https://github.com/velog-io/velog/pull/38"),
+  ),
 )

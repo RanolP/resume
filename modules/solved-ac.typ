@@ -91,7 +91,7 @@
           "solved-ac/solve-tier-" + str(user.solveTier),
           width: auto,
           bottom: -1em / 4,
-        ) #sym.and
+        ) $and$
         #icon(
           "solved-ac/arena-tier-" + str(user.arenaTier),
           height: 0.7em,
