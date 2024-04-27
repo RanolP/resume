@@ -57,7 +57,8 @@ for (const icon of icons) {
 
   console.log(`Downloading ${icon} from ${source.name}`);
 
-  await $`mkdir -p $(dirname ${file})`;
+  await $`mkdir -p \`dirname ${file}\``;
+  console.log(`curl -Lf '${source.url}' > ${file}`);
   await $`curl -Lf '${source.url}' > ${file}`.throws(true);
 }
 
