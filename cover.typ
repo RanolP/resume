@@ -272,7 +272,7 @@
       let groups = pulls.map(pull => pull.at("state", default: none)).dedup()
       for group in groups.filter(group => group != none) {
         [
-          #for pull in pulls.filter(pull => pull.at("state") == group) {
+          #for pull in pulls.filter(pull => pull.at("state", default: none) == group) {
             [
               #gh-pull-short(
                 pull,

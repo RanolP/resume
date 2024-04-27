@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "prepare": "git config core.hooksPath scripts/src/git-hooks",
+    "prepare": "git config core.hooksPath scripts/git-hooks",
     "download-icons": "./src/download-icons.ts",
     "fetch-github-metadata": "./src/fetch-github-metadata.ts",
     "fetch-solved-metadata": "./src/fetch-solved-metadata.ts",

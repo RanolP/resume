@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
-echo Generate cover on commit...
+./scripts/src/prebuild.ts
+echo Generate cover...
 ./scripts/src/generate-cover.ts
 git add cover
