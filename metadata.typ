@@ -10,6 +10,7 @@
   phone: ("+82", "10", "9542", "6545"),
   social: (github: "RanolP", twitter: "RanolP_777", solved-ac: "asdhugh1"),
   oss-contribs: (
+    (url: "https://github.com/oven-sh/bun/pull/10590"),
     (url: "https://github.com/openobserve/openobserve/pull/3151"),
     (url: "https://github.com/motiondivision/motionone/pull/244"),
     (url: "https://github.com/resend/react-email/pull/884"),
