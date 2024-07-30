@@ -1,8 +1,6 @@
 #import "components.typ": chip, icon
 
-#let gh-repo(name-with-owner) = link(
-  "https://github.com/" + name-with-owner,
-)[
+#let gh-repo(name-with-owner) = link("https://github.com/" + name-with-owner)[
   #icon("devicon/github", bottom: -1em / 6) #text(weight: 700)[#name-with-owner]
 ]
 
@@ -14,7 +12,7 @@
   ]
 }
 
-#let gh-pull-chip-merged(content: "Merged") ={
+#let gh-pull-chip-merged(content: "Merged") = {
   chip(background: color.rgb("#8250df"))[
     #set text(size: 8pt, weight: 500, fill: color.rgb("#ffffff"))
     #icon("octicon/git-merge-16?color=#ffffff")
@@ -69,7 +67,11 @@
   }
 
   let match = pull.url.match(regex("https?:\/\/github\.com\/([^/]+)\/([^/]+)\/pull\/[0-9]+")).captures
-  let label = if full { match.at(0) + "/" } else { "" } + match.at(1) + " #" + str(pull.number)
+  let label = if full {
+    match.at(0) + "/"
+  } else {
+    ""
+  } + match.at(1) + " #" + str(pull.number)
   link(pull.url)[
     #{
       if pull.state == "OPEN" {

@@ -5,12 +5,16 @@
   rows: (auto, auto),
   column-gutter: 10pt,
   row-gutter: 3pt,
-  ..(for (first, _) in entries {
-    (align(center)[#first],)
-  }),
-  ..(for (_, second) in entries {
-    (align(center)[#second],)
-  }),
+  ..(
+    for (first, _) in entries {
+      (align(center)[#first],)
+    }
+  ),
+  ..(
+    for (_, second) in entries {
+      (align(center)[#second],)
+    }
+  ),
 )
 
 #let format-thousand(n) = {

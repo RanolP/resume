@@ -4,8 +4,16 @@
       #image(
         url,
         format: "svg",
-        width: if width == none { size } else { width },
-        height: if height == none { size } else { height },
+        width: if width == none {
+          size
+        } else {
+          width
+        },
+        height: if height == none {
+          size
+        } else {
+          height
+        },
       )
     ]
   ]
@@ -95,8 +103,10 @@
 )
 
 #let tech-chips = for (k, v) in tech-list {
-  ((k): chip[
-    #set text(size: 8pt, weight: 600)
-    #icon(v.icon) #v.label
-  ])
+  (
+    (k): chip[
+      #set text(size: 8pt, weight: 600)
+      #icon(v.icon) #v.label
+    ],
+  )
 }

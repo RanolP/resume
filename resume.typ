@@ -8,24 +8,19 @@
 #set page(
   paper: "a4",
   margin: (top: 1.5cm, left: 1.5cm, right: 1.5cm, bottom: 1.8cm),
-  header: locate(
-    loc =>
-    if loc.page() != 1 {
-      pad(
-        left: -0.4cm,
+  header: locate(loc => if loc.page() != 1 {
+    pad(left: -0.4cm)[
+      #text(
+        fill: color.rgb("#575049"),
       )[
-        #text(
-          fill: color.rgb("#575049"),
-        )[
-          #text(weight: 700)[#metadata.name.nickname / #metadata.name.real-korean]
-          ---
-          #text(weight: 600, tracking: 1pt)[#metadata.role]
-          \@
-          #text(weight: 600, tracking: 0.5pt)[#metadata.location]
-        ]
+        #text(weight: 700)[#metadata.name.nickname / #metadata.name.real-korean]
+        ---
+        #text(weight: 600, tracking: 1pt)[#metadata.role]
+        \@
+        #text(weight: 600, tracking: 0.5pt)[#metadata.location]
       ]
-    },
-  ),
+    ]
+  }),
   footer-descent: 0pt,
   footer: [
     #pad(left: -0.4cm, top: 0.6cm, bottom: -0.01cm)[
@@ -35,9 +30,7 @@
         기준입니다
       ]
     ]
-    #align(
-      right,
-    )[
+    #align(right)[
       #pad(
         top: -1cm,
         right: -0.5cm,
@@ -48,9 +41,7 @@
           stroke: none,
           radius: (top-left: 25%, top-right: 25%, bottom-left: 25%, bottom-right: 25%),
         )[
-          #place(
-            horizon + center,
-          )[
+          #place(horizon + center)[
             #text(fill: color.rgb("#ffffff"), weight: 900, number-width: "tabular")[
               #counter(page).display("1")
             ]
@@ -63,9 +54,7 @@
 #set text(font: "Pretendard", features: ("ss06",), fallback: true)
 #show heading: set text(size: 16pt)
 
-= #text(
-  size: 32pt,
-)[#metadata.name.nickname / #metadata.name.real-korean#super[#upper[#metadata.name.real-english]]]
+= #text(size: 32pt)[#metadata.name.nickname / #metadata.name.real-korean#super[#upper[#metadata.name.real-english]]]
 #text(size: 12pt)[
   #text(weight: 900, tracking: 2pt)[#metadata.role]
   #text(weight: 600)[\@]
@@ -79,63 +68,62 @@
 
 #{
   set text(size: 10pt)
-  grid(columns: (1fr, 1.5fr), grid(
-    columns: (auto, 1fr),
-    column-gutter: 16pt,
-    row-gutter: 8pt,
-    [#icon("lucide/mail") *전자 우편#super[Mailbox]*],
-    link("mailto:" + metadata.email)[#metadata.email],
-    [#icon("lucide/phone") *전화#super[Phone]*],
-    link("tel:" + metadata.phone.join())[#metadata.phone.join(" ")],
-  ), grid(
-    columns: (auto, 1fr),
-    column-gutter: 16pt,
-    row-gutter: 8pt,
-    [#icon("devicon/github") *GitHub*],
-    link(
-      "https://github.com/" + metadata.social.github,
-    )[\@#metadata.social.github],
-    [#icon("logos/twitter") *Twitter*],
-    link(
-      "https://twitter.com/" + metadata.social.twitter,
-    )[\@#metadata.social.twitter],
-    [#icon-solved-ac() *solved.ac*],
-    link("https://solved.ac/profile/" + metadata.social.solved-ac)[
-      #solved-ac-profile(metadata.social.solved-ac)
-    ],
-  ))
+  grid(
+    columns: (1fr, 1.5fr),
+    grid(
+      columns: (auto, 1fr),
+      column-gutter: 16pt,
+      row-gutter: 8pt,
+      [#icon("lucide/mail") *전자 우편#super[Mailbox]*], link("mailto:" + metadata.email)[#metadata.email],
+      [#icon("lucide/phone") *전화#super[Phone]*], link("tel:" + metadata.phone.join())[#metadata.phone.join(" ")],
+    ),
+    grid(
+      columns: (auto, 1fr),
+      column-gutter: 16pt,
+      row-gutter: 8pt,
+      [#icon("devicon/github") *GitHub*],
+      link("https://github.com/" + metadata.social.github)[\@#metadata.social.github],
+
+      [#icon("logos/twitter") *Twitter*],
+      link("https://twitter.com/" + metadata.social.twitter)[\@#metadata.social.twitter],
+
+      [#icon-solved-ac() *solved.ac*],
+      link("https://solved.ac/profile/" + metadata.social.solved-ac)[
+        #solved-ac-profile(metadata.social.solved-ac)
+      ],
+    ),
+  )
 }
 
 #line(length: 100%)
 
 == 기술#super[Skills]
 
-#box(
-  inset: (left: 8pt, top: 4pt),
-)[
-  #align(
-    center,
-  )[
-    #for row in ((
-      tech-list.typescript--short,
-      tech-list.javascript--short,
-      tech-list.css,
-      tech-list.react-and-react-native,
-      tech-list.nextjs,
-      tech-list.solidjs,
-      tech-list.tailwindcss,
-      tech-list.unocss,
-      tech-list.eslint,
-    ), (
-      tech-list.rust,
-      tech-list.kotlin,
-      tech-list.swift,
-      tech-list.bash,
-      tech-list.gradle,
-      tech-list.git,
-      tech-list.github,
-      tech-list.github-actions,
-    )) {
+#box(inset: (left: 8pt, top: 4pt))[
+  #align(center)[
+    #for row in (
+      (
+        tech-list.typescript--short,
+        tech-list.javascript--short,
+        tech-list.css,
+        tech-list.react-and-react-native,
+        tech-list.nextjs,
+        tech-list.solidjs,
+        tech-list.tailwindcss,
+        tech-list.unocss,
+        tech-list.eslint,
+      ),
+      (
+        tech-list.rust,
+        tech-list.kotlin,
+        tech-list.swift,
+        tech-list.bash,
+        tech-list.gradle,
+        tech-list.git,
+        tech-list.github,
+        tech-list.github-actions,
+      ),
+    ) {
       set text(size: 8pt)
       enumerate(
         row.map(tech => (icon(tech.icon, size: 16pt, bottom: 0pt), tech.label)),
@@ -192,10 +180,11 @@
   (
     activityEntry(
       from: datetime(year: 2023, month: 10, day: 29),
-      title: pad(
-        top: -1em / 4,
-      )[
-        #grid(columns: (1fr, auto), gh-repo("psl-lang/psl"), [ #tech-chips.rust ])
+      title: pad(top: -1em / 4)[
+        #grid(
+          columns: (1fr, auto),
+          gh-repo("psl-lang/psl"), [ #tech-chips.rust ],
+        )
       ],
     )[ 알고리즘 문제 해결에 활용하기 좋은 프로그래밍 언어를 설계하고 만들었습니다. 간단한 입출력과 사칙 연산, 반복문 및 조건문을 사용할 수
       있습니다. 컴파일 결과물로는 백준 온라인 저지 및 CodeForces에 제출할 수 있는 C 코드를 생성해냅니다. ],
@@ -204,8 +193,7 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("RanolP/crowdin-strife"),
-          [ #tech-chips.rust #tech-chips.mysql ],
+          gh-repo("RanolP/crowdin-strife"), [ #tech-chips.rust #tech-chips.mysql ],
         )
       ],
     )[ Minecraft 번역 커뮤니티 사용자들이 기존 번역례 및 외전 게임 텍스트를 쉽게 찾아볼 수 있도록 봇을 제작했습니다 ],
@@ -214,8 +202,7 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("RanolP/measurrred"),
-          [ #tech-chips.rust ],
+          gh-repo("RanolP/measurrred"), [ #tech-chips.rust ],
         )
       ],
     )[
@@ -227,8 +214,7 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("RanolP/bojodog"),
-          [ #tech-chips.typescript #tech-chips.webpack ],
+          gh-repo("RanolP/bojodog"), [ #tech-chips.typescript #tech-chips.webpack ],
         )
       ],
     )[ VS Code 안에서 백준 온라인 저지 문제를 확인할 수 있는 간단한 VS Code 확장을 만들었습니다 ],
@@ -237,8 +223,7 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("RanolP/bojoke"),
-          [ #tech-chips.typescript #tech-chips.vite ],
+          gh-repo("RanolP/bojoke"), [ #tech-chips.typescript #tech-chips.vite ],
         )
       ],
     )[ prosemirror를 활용해 백준 온라인 저지의 양식으로 문제 본문을 편집할 수 있는 WYSIWYG 에디터를 구현했습니다 ],
@@ -247,8 +232,7 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("RanolP/rano-lang"),
-          [ #tech-chips.rust #tech-chips.wasm ],
+          gh-repo("RanolP/rano-lang"), [ #tech-chips.rust #tech-chips.wasm ],
         )
       ],
     )[ WebAssembly로 컴파일되는 작은 프로그래밍 언어를 만들어 함수 선언 및 호출, if ~ else 문 등을 구현했습니다. ],
@@ -257,8 +241,7 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("RanolP/dalmoori-font"),
-          [ #tech-chips.typescript ],
+          gh-repo("RanolP/dalmoori-font"), [ #tech-chips.typescript ],
         )
       ],
     )[ 한글날을 기념해 현대 한글 11,172자를 전부 지원하는 8 $times$ 8 도트풍 한글 글꼴 '달무리'를 만들었습니다. 현재 산돌 무료
@@ -268,8 +251,7 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("solvedac/unofficial-documentation"),
-          [ #tech-chips.openapi ],
+          gh-repo("solvedac/unofficial-documentation"), [ #tech-chips.openapi ],
         )
       ],
     )[ 알고리즘 문제풀이 커뮤니티, #link(
@@ -278,14 +260,10 @@
       API를 비공식적으로 OpenAPI 규격에 맞게 문서화했습니다 ],
     activityEntry(
       from: datetime(year: 2020, month: 5, day: 13),
-      title: pad(
-        top: -1em / 4,
-      )[
+      title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          link(
-            "https://github.com/hanzzok",
-          )[#icon("devicon/github", bottom: -1em / 6) hanzzok],
+          link("https://github.com/hanzzok")[#icon("devicon/github", bottom: -1em / 6) hanzzok],
           [ #tech-chips.rust #tech-chips.wasm #tech-chips.typescript #tech-chips.nextjs ],
         )
       ],
@@ -296,8 +274,7 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("RanolP/boj"),
-          [ #tech-chips.typescript #tech-chips.playwright ],
+          gh-repo("RanolP/boj"), [ #tech-chips.typescript #tech-chips.playwright ],
         )
       ],
     )[ 백준 온라인 저지에 문제를 제출하고, 성공 여부를 바탕으로 특정일에 푼 문제 및 사용 언어 통계들을 제공하는 툴체인을 개발했습니다 ],

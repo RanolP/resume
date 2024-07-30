@@ -32,12 +32,8 @@
 )
 #show heading: set text(size: 16pt)
 
-#align(
-  center,
-)[
-  = #text(
-    size: 24pt,
-  )[#metadata.name.nickname / #metadata.name.real-korean#super[#upper[#metadata.name.real-english]]]
+#align(center)[
+  = #text(size: 24pt)[#metadata.name.nickname / #metadata.name.real-korean#super[#upper[#metadata.name.real-english]]]
 
   #text(size: 12pt)[
     #text(weight: 900, tracking: 2pt)[#metadata.role]
@@ -55,16 +51,14 @@
     #metadata.bio.ko \ #text(size: 13pt)[#metadata.bio.en]
   ]
 
-  #icon(
-    if theme == "dark" { "skill-icons/github-dark" } else { "skill-icons/github-light" },
-  )
-  #link(
-    "https://github.com/" + metadata.social.github,
-  )[\@#metadata.social.github]
+  #icon(if theme == "dark" {
+    "skill-icons/github-dark"
+  } else {
+    "skill-icons/github-light"
+  })
+  #link("https://github.com/" + metadata.social.github)[\@#metadata.social.github]
   $bar$
-  #icon("logos/twitter") #link(
-    "https://twitter.com/" + metadata.social.twitter,
-  )[\@#metadata.social.twitter]
+  #icon("logos/twitter") #link("https://twitter.com/" + metadata.social.twitter)[\@#metadata.social.twitter]
   $bar$
   #icon-solved-ac() #link("https://solved.ac/profile/" + metadata.social.solved-ac)[
     #solved-ac-profile-short(metadata.social.solved-ac)
@@ -75,32 +69,44 @@
 
 #align(center)[
   == 기술#super[Skills]
-  #for row in ((
-    tech-list.typescript--short,
-    tech-list.javascript--short,
-    tech-list.css,
-    tech-list.react-and-react-native,
-    tech-list.nextjs,
-    tech-list.solidjs,
-    tech-list.tailwindcss,
-    tech-list.unocss,
-    tech-list.eslint,
-  ), (
-    tech-list.rust,
-    tech-list.kotlin,
-    tech-list.swift,
-    tech-list.bash,
-    tech-list.gradle,
-    tech-list.git,
-    tech-list.github,
-    tech-list.github-actions,
-  )) {
+  #for row in (
+    (
+      tech-list.typescript--short,
+      tech-list.javascript--short,
+      tech-list.css,
+      tech-list.react-and-react-native,
+      tech-list.nextjs,
+      tech-list.solidjs,
+      tech-list.tailwindcss,
+      tech-list.unocss,
+      tech-list.eslint,
+    ),
+    (
+      tech-list.rust,
+      tech-list.kotlin,
+      tech-list.swift,
+      tech-list.bash,
+      tech-list.gradle,
+      tech-list.git,
+      tech-list.github,
+      tech-list.github-actions,
+    ),
+  ) {
     set text(size: 8pt)
-    enumerate(row.map(tech => (icon(if theme == "dark" {
-      tech.at("icon-dark", default: tech.icon)
-    } else {
-      tech.icon
-    }, size: 16pt, bottom: 0pt), tech.label)))
+    enumerate(
+      row.map(tech => (
+        icon(
+          if theme == "dark" {
+            tech.at("icon-dark", default: tech.icon)
+          } else {
+            tech.icon
+          },
+          size: 16pt,
+          bottom: 0pt,
+        ),
+        tech.label,
+      )),
+    )
   }
 ]
 
@@ -151,10 +157,11 @@
   (
     activityEntry(
       from: datetime(year: 2023, month: 10, day: 29),
-      title: pad(
-        top: -1em / 4,
-      )[
-        #grid(columns: (1fr, auto), gh-repo("psl-lang/psl"), [ #tech-chips.rust ])
+      title: pad(top: -1em / 4)[
+        #grid(
+          columns: (1fr, auto),
+          gh-repo("psl-lang/psl"), [ #tech-chips.rust ],
+        )
       ],
     )[ ],
     activityEntry(
@@ -162,8 +169,7 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("RanolP/crowdin-strife"),
-          [ #tech-chips.rust #tech-chips.mysql ],
+          gh-repo("RanolP/crowdin-strife"), [ #tech-chips.rust #tech-chips.mysql ],
         )
       ],
     )[ ],
@@ -172,8 +178,7 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("RanolP/measurrred"),
-          [ #tech-chips.rust ],
+          gh-repo("RanolP/measurrred"), [ #tech-chips.rust ],
         )
       ],
     )[
@@ -183,8 +188,7 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("RanolP/bojodog"),
-          [ #tech-chips.typescript #tech-chips.webpack ],
+          gh-repo("RanolP/bojodog"), [ #tech-chips.typescript #tech-chips.webpack ],
         )
       ],
     )[ ],
@@ -193,8 +197,7 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("RanolP/bojoke"),
-          [ #tech-chips.typescript #tech-chips.vite ],
+          gh-repo("RanolP/bojoke"), [ #tech-chips.typescript #tech-chips.vite ],
         )
       ],
     )[ ],
@@ -203,8 +206,7 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("RanolP/rano-lang"),
-          [ #tech-chips.rust #tech-chips.wasm ],
+          gh-repo("RanolP/rano-lang"), [ #tech-chips.rust #tech-chips.wasm ],
         )
       ],
     )[ ],
@@ -213,8 +215,7 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("RanolP/dalmoori-font"),
-          [ #tech-chips.typescript ],
+          gh-repo("RanolP/dalmoori-font"), [ #tech-chips.typescript ],
         )
       ],
     )[ ],
@@ -223,21 +224,16 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("solvedac/unofficial-documentation"),
-          [ #tech-chips.openapi ],
+          gh-repo("solvedac/unofficial-documentation"), [ #tech-chips.openapi ],
         )
       ],
     )[ ],
     activityEntry(
       from: datetime(year: 2020, month: 5, day: 13),
-      title: pad(
-        top: -1em / 4,
-      )[
+      title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          link(
-            "https://github.com/hanzzok",
-          )[#icon("devicon/github", bottom: -1em / 6) hanzzok],
+          link("https://github.com/hanzzok")[#icon("devicon/github", bottom: -1em / 6) hanzzok],
           [ #tech-chips.rust #tech-chips.wasm #tech-chips.typescript #tech-chips.nextjs ],
         )
       ],
@@ -247,28 +243,26 @@
       title: pad(top: -1em / 4)[
         #grid(
           columns: (1fr, auto),
-          gh-repo("RanolP/boj"),
-          [ #tech-chips.typescript #tech-chips.playwright ],
+          gh-repo("RanolP/boj"), [ #tech-chips.typescript #tech-chips.playwright ],
         )
       ],
     )[ ],
   ),
 )
 
-#align(
-  center,
-)[
+#align(center)[
   == 오픈소스 기여#super[Open Source Contributions]
   #for (url,) in metadata.oss-contribs {
     gh-pull-req(url)
   }
-  #box(
-    width: 15cm,
-  )[
+  #box(width: 15cm)[
     #{
-      let pulls = metadata.oss-contribs.map(((url,)) => gh-pull(url)).sorted(
-        key: pull => ("none": 0, "OPEN": 1, "MERGED": 2, "CLOSED": 3).at(pull.at("state", default: "none")),
-      )
+      let pulls = metadata.oss-contribs.map(((url,)) => gh-pull(url)).sorted(key: pull => (
+        "none": 0,
+        "OPEN": 1,
+        "MERGED": 2,
+        "CLOSED": 3,
+      ).at(pull.at("state", default: "none")))
       let groups = pulls.map(pull => pull.at("state", default: none)).dedup()
       for group in groups.filter(group => group != none) {
         [

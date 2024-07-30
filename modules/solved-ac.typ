@@ -38,9 +38,9 @@
 
 #let solved-ac-tier-map = (
   "Unrated",
-  ..("Bronze", "Silver", "Gold", "Platinum", "Diamond", "Ruby")
-  .map((tier) => range(5, 0, step: -1).map(num => tier + str(num)))
-  .fold((), (acc, curr) => (..acc, ..curr)),
+  ..("Bronze", "Silver", "Gold", "Platinum", "Diamond", "Ruby").map(tier => range(5, 0, step: -1).map(num => (
+    tier + str(num)
+  ))).fold((), (acc, curr) => (..acc, ..curr)),
   "Master",
 )
 
@@ -66,7 +66,9 @@
         fill: tier-color,
         weight: 700,
       )[
-        #handle#super[\##{ user.rank }, top #{ calc.round(user.topPercent, digits: 2) }%]
+        #handle#super[\##{
+            user.rank
+          }, top #{ calc.round(user.topPercent, digits: 2) }%]
       ]
       #text(
         fill: tier-color.darken(40%),

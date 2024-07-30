@@ -1,4 +1,3 @@
 {
-  "typst-lsp.exportPdf": "never",
-  "typst-lsp.experimentalFormatterMode": "on"
+  "tinymist.formatterMode": "typstyle"
 }
