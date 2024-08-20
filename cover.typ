@@ -48,7 +48,7 @@
 
   #text(size: 16pt, weight: 600)[
     #set par(leading: 8pt)
-    #metadata.bio.ko \ #text(size: 13pt)[#metadata.bio.en]
+    #metadata.bio.ko.title \ #text(size: 13pt)[#metadata.bio.en.title]
   ]
 
   #icon(if theme == "dark" {

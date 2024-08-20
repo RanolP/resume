@@ -10,7 +10,9 @@
         Rust, Kotlin 등, *다양한 프로그래밍 언어를 사용*해 플랫폼에 최적화된 코드를 쉽게 작성할 수 있습니다.
       ],
     ),
-    en: [Building Softwares *Connecting* People with Computers],
+    en: (
+      title: [Building Softwares *Connecting* People with Computers],
+    ),
   ),
   role: "소프트웨어 엔지니어",
   location: "대한민국 서울특별시",
