@@ -61,11 +61,6 @@
   #text(weight: 700, tracking: 1pt)[#metadata.location]
 ]
 
-#text(size: 16pt, weight: 600)[
-  #set par(leading: 8pt)
-  #metadata.bio.ko \ #text(size: 13pt)[#metadata.bio.en]
-]
-
 #{
   set text(size: 10pt)
   grid(
@@ -95,7 +90,16 @@
   )
 }
 
-#line(length: 100%)
+
+#text(size: 14pt, weight: 400)[
+  #set par(leading: 8pt)
+  #text(size: 8pt, weight: 900, top-edge: -0pt, bottom-edge: 0pt)[
+    자기소개 #sym.dash.em #text(tracking: 2pt)[INTRODUCTION]
+  ] \
+  #metadata.bio.ko.title \ #text(size: 10pt)[#metadata.bio.ko.body]
+]
+
+#line(length: 100%, stroke: 0.75pt)
 
 == 기술#super[Skills]
 
@@ -148,6 +152,7 @@
       - Firebase를 활용한 A/B 테스트
       - react-email과 tailwindcss를 활용한 이메일 템플릿 생성 및 관리, CI 연동 작업
       - Next.js ISR을 활용한 Notion Database 기반 회사 블로그 구현
+      - AVFoundation 및 exoplayer (media3)를 활용한 react-native용 다운로드 모듈 개선
     ],
   ),
 )
