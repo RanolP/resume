@@ -5,6 +5,8 @@
 #import "modules/solved-ac.typ": *
 #import "metadata.typ": metadata
 
+#set page(fill: color.rgb(0, 0, 0, 0))
+
 #let theme = sys.inputs.at("theme", default: "light")
 #let palette = if theme == "light" {
   (
