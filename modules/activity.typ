@@ -96,13 +96,13 @@
   body,
   from: from,
   to: to,
-  title: grid(
-    columns: (1fr, auto),
-    belonging(role, organization),
-    if homepage != "" {
+  title: [
+    #belonging(role, organization)
+    #h(1fr)
+    #if homepage != "" {
       show link: set text(fill: color.rgb("#1c7ed6"))
       show link: underline
       homepage
-    },
-  ),
+    }
+  ],
 )

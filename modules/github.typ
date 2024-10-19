@@ -6,7 +6,7 @@
 
 #let gh-pull-chip-open(content: "Open") = {
   chip(background: color.rgb("#238636"))[
-    #set text(size: 8pt, weight: 500, fill: color.rgb("#ffffff"))
+    #set text(size: 0.75em, weight: 500, fill: color.rgb("#ffffff"))
     #icon("octicon/git-pull-request-16?color=#ffffff")
     #content
   ]
@@ -14,7 +14,7 @@
 
 #let gh-pull-chip-merged(content: "Merged") = {
   chip(background: color.rgb("#8250df"))[
-    #set text(size: 8pt, weight: 500, fill: color.rgb("#ffffff"))
+    #set text(size: 0.75em, weight: 500, fill: color.rgb("#ffffff"))
     #icon("octicon/git-merge-16?color=#ffffff")
     #content
   ]
@@ -41,21 +41,20 @@
     text(fill: color.rgb("#ff0000"))[\#NO_GITHUB_PULL_DATA\#]
     return
   }
-  if pull.state == "OPEN" {
-    {
+  text(size: 0.8em)[
+    #if pull.state == "OPEN" {
       gh-pull-chip-open()
-    }
-  } else if pull.state == "MERGED" {
-    {
+    } else if pull.state == "MERGED" {
       gh-pull-chip-merged()
+    } else {
+      pull.state
     }
-  } else {
-    pull.state
-  }
-  link(pull.url)[
-    #text(weight: 600)[#pull.title] \
-    #text(size: 0.75em)[
-      \##pull.number at #datetime(..pull.updatedAt).display()
+    #link(pull.url)[
+      #text(weight: 600)[#pull.title]
+    ]
+    #h(1fr)
+    #text(size: 0.8em, fill: color.rgb("#595959"))[
+      \##pull.number, #datetime(..pull.updatedAt).display()
     ]
   ]
 }
