@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-./scripts/src/prebuild.ts
+bun ./scripts/src/prebuild.ts
 echo Generate cover...
-./scripts/src/generate-cover.ts
+bun ./scripts/src/generate-cover.ts
 git add cover

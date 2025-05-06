@@ -1,10 +1,10 @@
 #import "util.typ": *
 
-#let formatDuration(duration) = {
-  let duration-in-weeks = if type(duration) == "duration" {
-    duration.weeks()
+#let formatDuration(dur) = {
+  let duration-in-weeks = if type(dur) == duration {
+    dur.weeks()
   } else {
-    duration
+    dur
   }
   let year = calc.floor(duration-in-weeks / 4 / 12)
   let month = calc.rem(calc.floor(duration-in-weeks / 4), 12)
@@ -21,7 +21,7 @@
 #let activityList(entries, body-header: none, header: none) = {
   let total-duration-in-weeks = 0
   for (from, to, ..) in entries {
-    if type(to) != "datetime" {
+    if type(to) != datetime {
       continue
     }
     total-duration-in-weeks += (to - from).weeks()
@@ -45,7 +45,7 @@
                 #{
                   from.display("[year].[month]")
                 }
-                #if type(to) == "datetime" {
+                #if type(to) == datetime {
                   [
                     \~
                     #if to != datetime.today() {
