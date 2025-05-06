@@ -28,6 +28,9 @@ jobs:
           mkdir fonts;
           cp -r public/static fonts;
       - run: ./scripts/src/prebuild.ts
+        env:
+          # gh cli requires this
+          GH_TOKEN: ${{ github.token }}
       - run: mkdir www; typst compile --font-path fonts resume.typ www/index.pdf
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
